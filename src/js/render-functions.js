@@ -1,39 +1,39 @@
-// import iziToast from 'izitoast';
-// import 'izitoast/dist/css/iziToast.min.css';
 
-// export function renderGallery(images) {
-//     const gallery = document.querySelector('.list');
-//     list.innerHTML = ''; 
+import iziToast from "izitoast";
+import "izitoast/dist/css/iziToast.min.css";
+import pathErrorIcon from "../img/icon-error.svg";
 
-//     if (images.length === 0) {
-//         iziToast.error({
-//             title: 'Error',
-//             message: 'Sorry, there are no images matching your search query. Please try again!',
-//         });
-//         return;
-//     }
+export function showErrorToast(message) {
+    iziToast.show({
+        theme: 'dark',
+        titleColor: 'white',
+        titleSize: '16px',
+        messageLineHeight: '150%',
+        messageSize: '16px',
+        color: 'white',
+        iconUrl: pathErrorIcon,
+        backgroundColor: "#ef4040",
+        messageColor: "white",
+        message,
+        position: 'topRight',
+        timeout: 3000
+    });
+}
 
-//     const creatMarkUp = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
-//         `<a href="${largeImageURL}" class="gallery-item">
-//             <img src="${webformatURL}" alt="${tags}" loading="lazy" />
-//             <div class="info">
-//                 <p>Likes: ${likes}</p>
-//                 <p>Views: ${views}</p>
-//                 <p>Comments: ${comments}</p>
-//                 <p>Downloads: ${downloads}</p>
-//             </div>
-//         </a>`
-//     ).join('');
+export function createMarkUp(arr) {
+    return arr.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => 
+        `<li class="gallery">
+          <a href="${largeImageURL}" class="gallery-item">
+           <img class="image" src="${webformatURL}" alt="${tags}" loading="lazy" />
+             <div class="info">
+                <p class="title-info">Likes: <span class="value">${likes}</span></p>
+                <p class="title-info">Views: <span class="value">${views}</span></p>
+                <p class="title-info">Comments: <span class="value">${comments}</span></p>
+                <p class="title-info">Downloads: <span class="value">${downloads}</span></p>
+             </div>
+         </a>
+         </li>`
+    ).join("");
+}
 
-//     gallery.insertAdjacentHTML('beforeend', creatMarkUp);
-// }
 
-// export function showLoader() {
-//     const loader = document.querySelector('.loader');
-//     loader.classList.remove('hidden'); 
-// }
-
-// export function hideLoader() {
-//     const loader = document.querySelector('.loader');
-//     loader.classList.add('hidden'); 
-// }
