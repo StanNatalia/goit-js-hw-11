@@ -29,7 +29,7 @@ form.addEventListener("submit", handlerSearch);
 
 function handlerSearch(event) {
     event.preventDefault();
-    const { query } = event.target.elements.trim();
+    const { query } = event.target.elements;
 
     serviceGallery(query.value)
       .then(data => {
