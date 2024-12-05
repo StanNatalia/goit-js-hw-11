@@ -2,7 +2,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vanilla App Template</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,15 +11,18 @@
   </head>
   <body>
 
-    <div class="search-input">
-      <input type="text" placeholder="Search images..." required />
+    <form class="search-input">
+      <input type="text" autocomplete="off" name="query" placeholder="Search images..." required />
       <button type="submit">Search</button>
-    </div>
+    </form>
+
+    <span class="loader" style="display: none;"></span>
 
     <ul class="list"></ul>
 
-    <script type="module" src="./js/render-functions.js"></script>
+
     <script type="module" src="./js/pixabay-api.js"></script>
+    <script type="module" src="./js/render-functions.js"></script>
     <script type="module" src="./main.js"></script>
   </body>
 </html>
