@@ -31,28 +31,54 @@ function handlerSearch(event) {
     event.preventDefault();
     const { query } = event.target.elements;
 
-    if (!query) {
+    if (!query.value) {
         iziToast.show({
-          title: 'Error',
-          message: 'Please enter a search query!',
+          theme: 'dark',
+          titleColor: 'white',
+          titleSize: '16px',  
+          messageLineHeight: '150%',             
+          messageSize: '16px', 
+          color: 'white',
+          iconUrl: pathErrorIcon,
+          backgroundColor: "#ef4040",
+          messageColor: "white",
+          message: "Please enter a search query!",
+          position: 'topRight',
+          timeout: 10000
         });
         return;
       }
 
     serviceGallery(query.value)
       .then(data => {
-        console.log(data)
-        list.innerHTML = createMarkUp(data.hits);
-        lightbox.refresh();
-      })
+         if (data.hits.length === 0) {
+            iziToast.show({
+                theme: 'dark',
+                titleColor: 'white',
+                titleSize: '16px', 
+                messageLineHeight: '150%',             
+                messageSize: '16px', 
+                color: 'white',
+                iconUrl: pathErrorIcon,
+                backgroundColor: "#ef4040",
+                messageColor: "white",
+                message: "No images found. Please try a different query!",
+                position: 'topRight',
+                timeout: 10000
+              });
+              return;
+         }
+           list.innerHTML = createMarkUp(data.hits);
+           lightbox.refresh();
+       })
+
 
       .catch(error => {
         iziToast.show({
-            title: 'Error',
             theme: 'dark',
             titleColor: 'white',
             titleSize: '16px', 
-            titleLineHeight: '150%',            
+            messageLineHeight: '150%',            
             messageSize: '16px', 
             color: 'white',
             iconUrl: pathErrorIcon,
