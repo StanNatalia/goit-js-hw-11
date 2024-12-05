@@ -16,7 +16,7 @@ export function showErrorToast(message) {
         messageColor: "white",
         message,
         position: 'topRight',
-        timeout: 3000
+        timeout: 2000
     });
 }
 
