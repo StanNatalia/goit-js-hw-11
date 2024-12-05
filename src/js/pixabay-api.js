@@ -37,6 +37,9 @@ function handlerSearch(event) {
         list.innerHTML = createMarkUp(data.hits);
         lightbox.refresh();
       })
+
+      
+
       .catch(error => {
         iziToast.show({
             title: 'Error',
@@ -54,8 +57,9 @@ function handlerSearch(event) {
             timeout: 10000
         });
       })
-      .finally(() => event.target.reset())
+      .finally(() => event.target.reset());
 }
+
 
 
 
