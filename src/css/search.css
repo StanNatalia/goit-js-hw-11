@@ -1,10 +1,14 @@
 body {
-    box-sizing: border-box; 
     font-family: "Montserrat", sans-serif;
+}
+
+
+.container {
+    box-sizing: border-box; 
     background-color: #fff;
-    width: 1128px;
-    margin-left: 156px;
-    margin-right: 156px;
+    max-width: 1128px;
+    margin: 0 auto;
+    padding: 0;
     margin-bottom: 36px;
 }
 
@@ -71,16 +75,27 @@ button:focus {
     background: #6c8cff; 
 }
 
+.hide {
+    opacity: 0;
+}
 
 .loader {
-    width: 48px;
-    height: 48px;
-    border: 5px solid #FFF;
+    display: none;
+    width: 75px;
+    height: 75px;
+    border: 5px solid rgba(78, 117, 255, 0.6);
     border-bottom-color: transparent;
     border-radius: 50%;
-    display: inline-block;
+    border-left-color: #4e75ff;;
     box-sizing: border-box;
     animation: rotation 1s linear infinite;
+    transition: 0.6s;
+
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1000; 
     }
 
     @keyframes rotation {
@@ -90,7 +105,8 @@ button:focus {
     100% {
         transform: rotate(360deg);
     }
-    } 
+  } 
+
 
 .list {
 display: flex;

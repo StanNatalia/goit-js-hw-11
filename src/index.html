@@ -11,14 +11,21 @@
   </head>
   <body>
 
+    <div class="container">
+      
     <form class="search-input">
       <input type="text" autocomplete="off" name="query" placeholder="Search images..."/>
       <button type="submit">Search</button>
     </form>
 
-    <span class="loader" style="display: none;"></span>
+    <div class="mask">
+       <span class="loader"></span>
+    </div>
+    
 
     <ul class="list"></ul>
+
+    </div>
 
 
     <script type="module" src="./js/pixabay-api.js"></script>
